@@ -25,7 +25,10 @@
 	<script src="js/controllers/todos-ctrl.js"></script> <!-- load up our controller -->
 	<script src="js/services/todos-service.js"></script> <!-- load our todo service -->
 	<script src="js/todos-main.js"></script> <!-- load our main application -->
-
+	<style type="text/css">
+		.checked{ background-color:#f0f0f0; color:#666; };
+		.checked { text-decoration: line-through; }
+	</style>
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -40,10 +43,21 @@
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				<div class="checkbox"  ng-repeat="todo in todos">
-                  <label>
-                      <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-                  </label>
+				<div class="checkbox" >
+				<ul ng-repeat="todo in todos" style="list-style-type: none;">
+                  <li>
+                  	<label>
+                 <!--  <input type="checkbox" ng-true-value="1" ng-false-value="'0'" ng-model="todo.done" ng-change="updateTodo(todo._id)"> -->
+                  
+             		
+                      <input class="toggle" type="checkbox" ng-model="todo.completed" ng-click="toggleCompleted(todo)">
+                      {{ todo.text }}
+                      {{ todo.completed}}
+                      <button class="btn btn-danger btn-xs" ng-click="deleteTodo(todo._id)"> X</button>
+                 	
+                  	</label>
+                  </li>
+                  </ul>
              	</div>
                              
 				<p class="text-center" ng-show="loading">

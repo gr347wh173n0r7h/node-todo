@@ -47,4 +47,36 @@ angular.module('todoController', [])
 					$scope.todos = data; // assign our new list of todos
 				});
 		};
+
+		$scope.toggleCompleted = function (todo, completed) {
+			// $scope.loading = true;
+			todo.completed = true;
+
+			Todo.put(todo, todos.indexOf(todo))
+				// if successful creation, call our get function to get all the new todos
+				.success(function(data) {
+					$scope.loading = false;
+					$scope.todos = data; // assign our new list of todos
+				});
+		};
+
+
+			// $scope.completed = 0;
+			// $scope.updateComplete = function(){
+			// #scope.completed++;
+		// }
+
+		// // Update ==================================================================
+		// // Update a todo after checking it
+		// $scope.updateTodo = function(id) {
+		// 	$scope.loading = true;
+
+		// 	Todos.put(id, $scope.formData)
+		// 		// if successful creation, call our get function to get all the new todos
+		// 		.success(function(data) {
+		// 			$scope.loading = false;
+		// 			$scope.formData = {}; // clear the form so our user is ready to enter another
+		// 			$scope.todos = data; // assign our new list of todos
+		// 		});
+		// };
 	}]);
