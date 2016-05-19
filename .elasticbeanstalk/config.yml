@@ -1,2 +1,11 @@
+branch-defaults:
+  master:
+    environment: node-todo-dev
+    group_suffix: null
 global:
+  application_name: node-todo
+  default_ec2_keyname: SE172
+  default_platform: Node.js
+  default_region: us-west-2
   profile: eb-cli
+  sc: git
